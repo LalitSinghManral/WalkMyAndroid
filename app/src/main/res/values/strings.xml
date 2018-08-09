@@ -16,8 +16,26 @@
 <resources>
     <string name="app_name">Walk My Android</string>
     <string name="get_location">Get Location</string>
+    <string name="get_tracking_location">Start Tracking Location</string>
+    <string name="no_location">Location is not Available </string>
     <string name="android_image">Android Image</string>
     <string name="textview_hint">Press the button to get the last known
         location
     </string>
+    <string name="textview_hint_track">Press the button to start tracking you location
+    </string>
+
+    <string name="location_text">"Latitude: %1$.4f \n Longitude: %2$.4f
+ \n Timestamp: %3$tr"</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="exception">Exception raised!</string>
+    <string name="no_address_found">No Address found at given Latitude and Longitude</string>
+
+    <string name="address_text">"Address: %1$s \n Timestamp: %2$tr"</string>
+    <string name="loading">Loading...</string>
+    <string name="stop_tracking_location">Stop Tracking Location</string>
+    <string name="gps_off">Location Tracking is OFF</string>
+
 </resources>
