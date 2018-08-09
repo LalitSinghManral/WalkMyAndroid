@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity implements
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
+        if (savedInstanceState != null){
+            mTrackingLocation = savedInstanceState.getBoolean(LOCATION_TRACKING_STORE);
+        }
+
         mGetLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,9 +89,6 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
-        if (savedInstanceState != null){
-            mTrackingLocation = savedInstanceState.getBoolean(LOCATION_TRACKING_STORE);
-        }
 
         mLocationCallback = new LocationCallback(){
             @Override
@@ -193,8 +194,25 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (mTrackingLocation){
+            startTrackingLocation();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mTrackingLocation){
+            stopTrackingLocation();
+            mTrackingLocation = true;
+        }
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
         outState.putBoolean(LOCATION_TRACKING_STORE, mTrackingLocation);
+        super.onSaveInstanceState(outState);
     }
 }
